@@ -65,23 +65,4 @@ class ClientTest extends TestCase
         $this->assertEquals('client-secret', $client->getClientSecret());
     }
 
-    public function testGetDefaultState()
-    {
-        $client = new Client();
-
-        $this->assertEquals(null, $client->getState());
-    }
-
-    public function testSetState()
-    {
-        $client = new Client();
-        $client->setState('state');
-
-        $reflection = new ReflectionProperty(Client::class, 'state');
-        $reflection->setAccessible(true);
-
-        $this->assertEquals('state', $reflection->getValue($client));
-        $this->assertEquals('state', $client->getState());
-    }
-
 }

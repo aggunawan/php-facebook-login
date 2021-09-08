@@ -10,8 +10,6 @@ class Client
 
     private string $clientSecret = '';
 
-    private ?string $state = null;
-
     public function getVersion(): string
     {
         return $this->version;
@@ -42,17 +40,6 @@ class Client
     public function setClientSecret(string $clientSecret): Client
     {
         $this->clientSecret = $clientSecret;
-        return $this;
-    }
-
-    public function getState(): ?string
-    {
-        return $this->state;
-    }
-
-    public function setState(string $state): Client
-    {
-        $this->state = $state;
         return $this;
     }
 
