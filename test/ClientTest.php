@@ -102,23 +102,4 @@ class ClientTest extends TestCase
         $this->assertEquals(['public_profile', 'insight'], $reflection->getValue($client));
         $this->assertEquals('public_profile,insight', $client->getScopes());
     }
-
-    public function testGetDefaultRedirectUrl()
-    {
-        $client = new Client();
-
-        $this->assertEquals('', $client->getRedirectUrl());
-    }
-
-    public function testSetRedirectUrl()
-    {
-        $object = new Client();
-        $object->setRedirectUrl('redirect-url');
-
-        $reflection = new ReflectionProperty(Client::class, 'redirectUrl');
-        $reflection->setAccessible(true);
-
-        $this->assertEquals('redirect-url', $reflection->getValue($object));
-        $this->assertEquals('redirect-url', $object->getRedirectUrl());
-    }
 }

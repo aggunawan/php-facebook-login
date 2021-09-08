@@ -10,8 +10,6 @@ class Client
 
     private string $clientSecret = '';
 
-    private string $redirectUrl = '';
-
     private ?string $state = null;
 
     private array $scopes = ['public_profile'];
@@ -57,17 +55,6 @@ class Client
     public function setState(string $state): Client
     {
         $this->state = $state;
-        return $this;
-    }
-
-    public function getRedirectUrl(): string
-    {
-        return $this->redirectUrl;
-    }
-
-    public function setRedirectUrl(string $redirectUrl): Client
-    {
-        $this->redirectUrl = $redirectUrl;
         return $this;
     }
 

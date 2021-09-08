@@ -11,21 +11,21 @@ class Login
         $this->client = $client;
     }
 
-    public function getUrl(): string
+    public function getUrl(string $redirectUri): string
     {
         return "https://www.facebook.com/{$this->client->getVersion()}/dialog/oauth?" . http_build_query([
                 'client_id' => $this->client->getClientId(),
-                'redirect_uri' => $this->client->getRedirectUrl(),
+                'redirect_uri' => $redirectUri,
                 'scope' => $this->client->getScopes(),
                 'state' => $this->client->getState(),
             ]);
     }
 
-    public function getAccessTokenUrl(string $authCode): string
+    public function getAccessTokenUrl(string $redirectUri, string $authCode): string
     {
         return "https://graph.facebook.com/{$this->client->getVersion()}/oauth/access_token?" . http_build_query([
                 'client_id' => $this->client->getClientId(),
-                'redirect_uri' => $this->client->getRedirectUrl(),
+                'redirect_uri' => $redirectUri,
                 'client_secret' => $this->client->getClientSecret(),
                 'code' => $authCode
             ]);
