@@ -2,24 +2,13 @@
 
 namespace Aggunawan\FacebookLogin;
 
-class Client
-{
-    private string $version = 'v11.0';
+use Aggunawan\FacebookLogin\Abstracts\Init;
 
+class Client extends Init
+{
     private string $clientId = '';
 
     private string $clientSecret = '';
-
-    public function getVersion(): string
-    {
-        return $this->version;
-    }
-
-    public function setVersion(string $version): Client
-    {
-        $this->version = $version;
-        return $this;
-    }
 
     public function getClientId(): string
     {
