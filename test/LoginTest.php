@@ -27,14 +27,13 @@ class LoginTest extends TestCase
         $client = (new Client())
             ->setVersion('v10.0')
             ->setClientId('client-id')
-            ->setState('state')
-            ->setScopes(['lorem', 'ipsum']);
+            ->setState('state');
 
         $login = new Login($client);
 
         $this->assertEquals(
             'https://www.facebook.com/v10.0/dialog/oauth?client_id=client-id&redirect_uri=redirect-url&scope=lorem%2Cipsum&state=state',
-            $login->getUrl('redirect-url')
+            $login->getUrl('redirect-url', ['lorem', 'ipsum'])
         );
     }
 

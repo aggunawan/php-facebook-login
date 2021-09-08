@@ -11,12 +11,12 @@ class Login
         $this->client = $client;
     }
 
-    public function getUrl(string $redirectUri): string
+    public function getUrl(string $redirectUri, array $scopes = ['public_profile']): string
     {
         return "https://www.facebook.com/{$this->client->getVersion()}/dialog/oauth?" . http_build_query([
                 'client_id' => $this->client->getClientId(),
                 'redirect_uri' => $redirectUri,
-                'scope' => $this->client->getScopes(),
+                'scope' => implode(',', $scopes),
                 'state' => $this->client->getState(),
             ]);
     }

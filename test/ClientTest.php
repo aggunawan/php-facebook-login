@@ -84,22 +84,4 @@ class ClientTest extends TestCase
         $this->assertEquals('state', $client->getState());
     }
 
-    public function testGetDefaultScopes()
-    {
-        $client = new Client();
-
-        $this->assertEquals('public_profile', $client->getScopes());
-    }
-
-    public function testSetScopes()
-    {
-        $client = new Client();
-        $client->setScopes(['public_profile', 'insight']);
-
-        $reflection = new ReflectionProperty(Client::class, 'scopes');
-        $reflection->setAccessible(true);
-
-        $this->assertEquals(['public_profile', 'insight'], $reflection->getValue($client));
-        $this->assertEquals('public_profile,insight', $client->getScopes());
-    }
 }

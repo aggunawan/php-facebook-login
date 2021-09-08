@@ -12,8 +12,6 @@ class Client
 
     private ?string $state = null;
 
-    private array $scopes = ['public_profile'];
-
     public function getVersion(): string
     {
         return $this->version;
@@ -58,14 +56,4 @@ class Client
         return $this;
     }
 
-    public function getScopes(): string
-    {
-        return implode(',', $this->scopes);
-    }
-
-    public function setScopes(array $scopes): Client
-    {
-        $this->scopes = $scopes;
-        return $this;
-    }
 }
