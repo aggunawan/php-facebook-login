@@ -4,7 +4,6 @@ PHP pure for implement Facebook Oauth2 Login
 
 ## Note
 
-- Run `index.php` with php cli for example
 - Feel free to pull request
 - Feel free to open an issue
 
