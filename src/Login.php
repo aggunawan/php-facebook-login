@@ -16,8 +16,8 @@ class Login
         return "https://www.facebook.com/{$this->client->getVersion()}/dialog/oauth?" . http_build_query([
                 'client_id' => $this->client->getClientId(),
                 'redirect_uri' => $redirectUri,
-                'scope' => implode(',', $scopes),
-                'state' => $state,
+                'scope' => implode(',', (count($scopes) == 0 ? ['public_profile'] : $scopes)),
+                'state' => strlen($state) == 0 ? null : $state,
             ]);
     }
 
