@@ -34,6 +34,30 @@ class LoginTest extends TestCase
         );
     }
 
+    public function testGetLoginUrlWithEmptyArrayOfScopes()
+    {
+        $client = (new Client())->setClientId('client-id');
+
+        $login = new Login($client);
+
+        $this->assertEquals(
+            'https://www.facebook.com/v11.0/dialog/oauth?client_id=client-id&redirect_uri=redirect-url&scope=public_profile&state=state',
+            $login->getUrl('redirect-url', 'state', [])
+        );
+    }
+
+    public function testGetLoginUrlWithEmptyStringState()
+    {
+        $client = (new Client())->setClientId('client-id');
+
+        $login = new Login($client);
+
+        $this->assertEquals(
+            'https://www.facebook.com/v11.0/dialog/oauth?client_id=client-id&redirect_uri=redirect-url&scope=public_profile',
+            $login->getUrl('redirect-url', '', [])
+        );
+    }
+
     public function testGetExchangeTokenUrl()
     {
         $client = (new Client())
